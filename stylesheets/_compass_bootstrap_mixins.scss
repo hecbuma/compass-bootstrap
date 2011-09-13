@@ -12,7 +12,7 @@
 }
 
 @mixin bt-btn($from-color,$to-color,$txt-color: default) {
-  @if $txt-color == default  {$txt-color: #ffffff;}
+  @if $txt-color == default {$txt-color: #ffffff;}
   cursor: pointer;
   display: inline-block;
   background-color: $to-color;
