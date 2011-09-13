@@ -11,8 +11,8 @@
   width: $size + 0px;
 }
 
-@mixin bt-btn($from-color,$to-color,$txt-color:defualt) {
-  @if $txt-color == defualt  {$txt-color = #ffffff}
+@mixin bt-btn($from-color,$to-color,$txt-color: default) {
+  @if $txt-color == default  {$txt-color: #ffffff;}
   cursor: pointer;
   display: inline-block;
   background-color: $to-color;
