@@ -1,0 +1,38 @@
+Twitter Bootstrap- Compass Plugin
+================================
+
+Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.
+It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.: <http://twitter.github.com/bootstrap/>
+
+* This plugin is consistent with 1.2.0 version of Bootstrap  
+---------
+
+This plugin adds the Bootstrap to [Compass](http://compass-style.org/).
+
+Install
+=======
+
+    gem install compass-bootstrap
+
+
+
+Adding the Bootstrap plugin to an existing project
+============================================
+
+Add the following to your compass.rb config file:
+
+    # Require any additional compass plugins here.
+    require 'compass-bootstrap'
+    
+Then make sure you have imported the grid library into your core .sass or .scss file with:
+
+    @import 'compass_bootstrap';
+
+Using bt-column instead of .spanX
+============================
+
+this plugin includes a mixin called bt-column, that you can use instead of add the spanX class just add in your styles:
+   
+   @include bt-column(4);
+
+and thats all
