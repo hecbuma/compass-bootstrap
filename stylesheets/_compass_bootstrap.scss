@@ -196,7 +196,15 @@ textarea {
 /*
  * Scaffolding
  * Basic and global styles for generating a grid system, structural layout, and page templates
- * ------------------------------------------------------------------------------------------- */
+ * ------------------------------------------------------------------------------------------- 
+ 
+ * bt-column mixin always MUST be used inside of a .row class, as the bootstap says
+ 
+ */
+@mixin bt-column($number) {
+  $size : 40px * $number + 20px * ($number - 1);
+  width: $size + 0px;
+}
 
 .row {
   zoom: 1;
