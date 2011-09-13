@@ -5,7 +5,7 @@ Bootstrap is a toolkit from Twitter designed to kickstart development of webapps
 It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.: <http://twitter.github.com/bootstrap/>
 
 * This plugin is consistent with 1.2.0 version of Bootstrap  
----------
+------------------------------------------------------------
 
 This plugin adds the Bootstrap to [Compass](http://compass-style.org/).
 
@@ -33,6 +33,6 @@ Using bt-column instead of .spanX
 
 this plugin includes a mixin called bt-column, that you can use instead of add the spanX class just add in your styles:
    
-   @include bt-column(4);
+    @include bt-column(4);
 
 and thats all
