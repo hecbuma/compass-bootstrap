@@ -53,3 +53,8 @@ this mixin will add the styles from btn bootstrap class, this had 3 params
     $from-color: defines the color where background starts.
     $to-color: defines the color where background ends.
     $txt-color: default white, this define the text color
+
+## TODO
+
+* port more classes to mixins
+
