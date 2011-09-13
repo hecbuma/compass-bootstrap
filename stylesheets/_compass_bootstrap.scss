@@ -202,6 +202,9 @@ textarea {
  
  */
 @mixin bt-column($number) {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   $size : 40px * $number + 20px * ($number - 1);
   width: $size + 0px;
 }
