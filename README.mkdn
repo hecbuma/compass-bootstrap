@@ -32,7 +32,7 @@ this will make available all the classes and styles from bootstrap
 
 If you only want to add some bootstrap styles to your files, add:
 
-   @import 'compass_bootstrap_mixins';
+    @import 'compass_bootstrap_mixins';
 
 And now you can use the mixins on your own classes:
 
@@ -46,9 +46,10 @@ this plugin includes a mixin called bt-column, that you can use instead of add t
 Using btn mixin to your styles
 ==============================
 
-   bt-btn($from-color,$to-color,[$txt-color(optional)]);
+    bt-btn($from-color,$to-color,[$txt-color(optional)]);
    
 this mixin will add the styles from btn bootstrap class, this had 3 params
+
     $from-color: defines the color where background starts.
     $to-color: defines the color where background ends.
     $txt-color: default white, this define the text color
