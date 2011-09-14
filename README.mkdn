@@ -19,11 +19,21 @@ Install
 Adding the Bootstrap plugin to an existing project
 ============================================
 
-Add the following to your compass.rb config file:
+Run the following on your project's directory
 
-    # Require any additional compass plugins here.
-    require 'compass-bootstrap'
+    compass install compass-bootstrap/compass-bootstrap 
     
+this will add the following files to your stylesheets dir:
+
+    create app/stylesheets/compass_bootstrap.scss 
+    create app/stylesheets/_reset.scss 
+    create app/stylesheets/_preboot.scss 
+    create app/stylesheets/_scaffolding.scss 
+    create app/stylesheets/_type.scss 
+    create app/stylesheets/_tables.scss 
+    create app/stylesheets/_forms.scss 
+    create app/stylesheets/_patterns.scss 
+
 Now you can add the bootstrap style to your .scss/.sass files:
 
     @import 'compass_bootstrap';
@@ -32,29 +42,67 @@ this will make available all the classes and styles from bootstrap
 
 If you only want to add some bootstrap styles to your files, add:
 
-    @import 'compass_bootstrap_mixins';
+    @import 'preboot.scss';
 
 And now you can use the mixins on your own classes:
 
-Using bt-column instead of .spanX
-============================
 
-this plugin includes a mixin called bt-column, that you can use instead of add the spanX class just add in your styles:
-   
-    @include bt-column(4);
+## Changing the theme color:
+-----------------------------
 
-Using btn mixin to your styles
-==============================
+Open _preboot.sccs and you will see the entire list of colors, you can change those in order to apply your own color scheme
 
-    bt-btn($from-color,$to-color,[$txt-color(optional)]);
-   
-this mixin will add the styles from btn bootstrap class, this had 3 params
+// VARIABLES
+// ---------
 
-    $from-color: defines the color where background starts.
-    $to-color: defines the color where background ends.
-    $txt-color: default white, this define the text color
+// / Links
+$linkColor:         #0069d6;
+$linkColorHover:    darken($linkColor, 10);
+
+// Grays
+$black:             #000;
+$grayDark:          lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$grayLight:         lighten($black, 75%);
+$grayLighter:       lighten($black, 90%);
+$white:             #fff;
+
+// Accent Colors
+$blue:              #049CDB;
+$blueDark:          #0064CD;
+$green:             #46a546;
+$red:               #9d261d;
+$yellow:            #ffc40d;
+$orange:            #f89406;
+$pink:              #c3325f;
+$purple:            #7a43b6;
+
+// Baseline grid
+$basefont:          13px;
+$baseline:          18px;
+
+// Griditude
+$gridColumns:       16;
+$gridColumnWidth:   40px;
+$gridGutterWidth:   20px;
+$extraSpace:        ($gridGutterWidth * 2); // For our grid calculations
+$siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// Color Scheme
+$baseColor:         $blue;                  // Set a base color
+$complement:        spin($baseColor, 180);  // Determine a complementary color
+$split1:            spin($baseColor, 158);  // Split complements
+$split2:            spin($baseColor, -158);
+$triad1:            spin($baseColor, 135);  // Triads colors
+$triad2:            spin($baseColor, -135);
+$tetra1:            spin($baseColor, 90);   // Tetra colors
+$tetra2:            spin($baseColor, -90);
+$analog1:           spin($baseColor, 22);   // Analogs colors
+$analog2:           spin($baseColor, -22);
+
 
 ## TODO
 
+* make the documentation file for mixins and a example site
 * port more classes to mixins
 
