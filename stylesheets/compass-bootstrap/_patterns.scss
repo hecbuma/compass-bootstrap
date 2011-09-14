@@ -56,7 +56,7 @@
   input {
     background-color: #444;
     background-color: rgba(255,255,255,.3);
-    #font > .sans-serif(13px, normal, 1);
+    @include sans-serif(13px, normal, 1);
     padding: 4px 9px;
     color: #fff;
     color: rgba(255,255,255,.75);
@@ -301,7 +301,7 @@ a.menu:after,
   margin: 0 0 20px;
   padding: 0;
   list-style: none;
-  .clearfix();
+  @include clearfix();
   > li {
     float: left;
     > a {
@@ -321,7 +321,7 @@ a.menu:after,
       margin-right: 2px;
       padding: 0 15px;
       line-height: ($baseline * 2) - 1;
-      .border-radius(4px 4px 0 0);
+      @include border-radius(4px 4px 0 0);
       &:hover {
         background-color: #eee;
         border-bottom: 1px solid #ddd;
@@ -341,7 +341,7 @@ a.menu:after,
   .dropdown-menu {
     top: 35px;
     border-width: 1px;
-    .border-radius(0 6px 6px 6px);
+    @include border-radius(0 6px 6px 6px);
   }
   // first one for backwards compatibility
   a.menu:after,
@@ -364,7 +364,7 @@ a.menu:after,
     padding: 0 15px;
     text-shadow: 0 1px 1px #fff;
     line-height: 30px;
-    .border-radius(15px);
+    @include border-radius(15px);
     &:hover {
       background: $linkColorHover;
       color: #fff;
@@ -388,7 +388,7 @@ a.menu:after,
   margin-top: 60px;
   margin-bottom: 30px;
   padding: 60px;
-  .border-radius(6px);
+  @include border-radius(6px);
   h1 {
     margin-bottom: 0;
     font-size: 60px;
@@ -414,7 +414,7 @@ footer {
 .page-header {
   margin-bottom: $baseline - 1;
   border-bottom: 1px solid #ddd;
-  .box-shadow(0 1px 0 rgba(255,255,255,.5));
+  @include bt-box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {
     margin-bottom: ($baseline / 2) - 1px;
   }
@@ -429,7 +429,7 @@ footer {
   // Button Base
   cursor: pointer;
   display: inline-block;
-  #gradient > .vertical-three-colors(#ffffff, #ffffff, 25%, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
+  #@include vertical-three-colors-gradient(#ffffff, #ffffff, 25%, darken(#ffffff, 10%)); // Don't use .gradientbar() here since it does a three-color gradient
   padding: 5px 14px 6px;
   text-shadow: 0 1px 1px rgba(255,255,255,.75);
   color: #333;
@@ -437,9 +437,9 @@ footer {
   line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
-  .border-radius(4px);
+  @include border-radius(4px);
   $shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  .box-shadow($shadow);
+  @include bt-box-shadow($shadow);
 
   &:hover {
     background-position: 0 -15px;
@@ -450,32 +450,32 @@ footer {
   // Primary Button Type
   &.primary {
     color:#fff;
-    .gradientBar($blue, $blueDark)
+    @include gradientBar($blue, $blueDark)
   }
 
    // Transitions
-  .transition(.1s linear all);
+  @include transition(.1s linear all);
 
   // Active and Disabled states
   &:active {
     $shadow: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
-    .box-shadow($shadow);
+    @include bt-box-shadow($shadow);
   }
   &.disabled {
     cursor: default;
     background-image: none;
-    .reset-filter();
-    .opacity(65);
-    .box-shadow(none);
+    @include reset-filter();
+    @include bt-opacity(65);
+    @include bt-box-shadow(none);
   }
   &[disabled] {
     // disabled pseudo can't be included with .disabled
     // def because IE8 and below will drop it ;_;
     cursor: default;
     background-image: none;
-    .reset-filter();
-    .opacity(65);
-    .box-shadow(none);
+    @include reset-filter();
+    @include bt-opacity(65);
+    @include bt-box-shadow(none);
   }
 
   // Button Sizes
@@ -483,7 +483,7 @@ footer {
     font-size: 16px;
     line-height: normal;
     padding: 9px 14px 9px;
-    .border-radius(6px);
+    @include border-radius(6px);
   }
   &.small {
     padding: 7px 9px 7px;
@@ -511,15 +511,15 @@ input[type=submit].btn {
 
 // Base alert styles
 .alert-message {
-  .gradientBar(#fceec1, #eedc94); // warning by default
+  @include gradientBar(#fceec1, #eedc94); // warning by default
   margin-bottom: $baseline;
   padding: 7px 14px;
   color: $grayDark;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   border-width: 1px;
   border-style: solid;
-  .border-radius(4px);
-  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+  @include border-radius(4px);
+  @include bt-box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
 
   // Remove extra margin from content
   h5 {
@@ -535,7 +535,7 @@ input[type=submit].btn {
   }
   .btn {
     // Provide actions with buttons
-    .box-shadow(0 1px 0 rgba(255,255,255,.25));
+    @include bt-box-shadow(0 1px 0 rgba(255,255,255,.25));
   }
   .close {
     float: right;
@@ -544,21 +544,21 @@ input[type=submit].btn {
     font-size: 20px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,1);
-    .opacity(20);
+    @include bt-opacity(20);
     &:hover {
       color: $black;
       text-decoration: none;
-      .opacity(40);
+      @include bt-opacity(40);
     }
   }
 
   &.block-message {
     background-image: none;
     background-color: lighten(#fceec1, 5%);
-    .reset-filter();
+    @include reset-filter();
     padding: 14px;
     border-color: #fceec1;
-    .box-shadow(none);
+    @include bt-box-shadow(none);
 
     p {
       margin-right: 30px;
@@ -599,8 +599,8 @@ input[type=submit].btn {
     margin: 0;
     border: 1px solid #ddd;
     border: 1px solid rgba(0,0,0,.15);
-    .border-radius(3px);
-    .box-shadow(0 1px 2px rgba(0,0,0,.05));
+    @include border-radius(3px);
+    @include bt-box-shadow(0 1px 2px rgba(0,0,0,.05));
   }
   li {
     display: inline;
@@ -640,8 +640,8 @@ input[type=submit].btn {
   min-height: 20px;
   border: 1px solid #eee;
   border: 1px solid rgba(0,0,0,.05);
-  .border-radius(4px);
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  @include border-radius(4px);
+  @include bt-box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
 }
 
 
@@ -668,9 +668,9 @@ input[type=submit].btn {
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
   *border: 1px solid #999; /* IE6-7 */
-  .border-radius(6px);
-  .box-shadow(0 3px 7px rgba(0,0,0,0.3));
-  .background-clip(padding-box);
+  @include border-radius(6px);
+  @include bt-box-shadow(0 3px 7px rgba(0,0,0,0.3));
+  @include background-clip(padding-box);
 }
 .modal-header {
   border-bottom: 1px solid #eee;
@@ -691,9 +691,9 @@ input[type=submit].btn {
   background-color: #f5f5f5;
   padding: 14px 20px 15px;
   border-top: 1px solid #ddd;
-  .border-radius(0 0 6px 6px);
-  .box-shadow(inset 0 1px 0 #fff);
-  .clearfix();
+  @include border-radius(0 0 6px 6px);
+  @include bt-box-shadow(inset 0 1px 0 #fff);
+  @include clearfix();
   margin-bottom: 0;
   .btn {
     float: right;
@@ -705,8 +705,7 @@ input[type=submit].btn {
 // POPOVER ARROWS
 // --------------
 
-#popoverArrow {
-  .above($arrowWidth: 5px) {
+  @mixin popoverArrow-above($arrowWidth: 5px) {
     bottom: 0;
     left: 50%;
     margin-left: -$arrowWidth;
@@ -714,7 +713,7 @@ input[type=submit].btn {
     border-right: $arrowWidth solid transparent;
     border-top: $arrowWidth solid #000;
   }
-  .left($arrowWidth: 5px) {
+  @mixin popoverArrow-left($arrowWidth: 5px) {
     top: 50%;
     right: 0;
     margin-top: -$arrowWidth;
@@ -722,7 +721,7 @@ input[type=submit].btn {
     border-bottom: $arrowWidth solid transparent;
     border-left: $arrowWidth solid #000;
   }
-  .below($arrowWidth: 5px) {
+  @mixn popoverArrow-below($arrowWidth: 5px) {
     top: 0;
     left: 50%;
     margin-left: -$arrowWidth;
@@ -730,7 +729,7 @@ input[type=submit].btn {
     border-right: $arrowWidth solid transparent;
     border-bottom: $arrowWidth solid #000;
   }
-  .right($arrowWidth: 5px) {
+  @mixin popoverArrow-right($arrowWidth: 5px) {
     top: 50%;
     left: 0;
     margin-top: -$arrowWidth;
@@ -751,10 +750,10 @@ input[type=submit].btn {
   font-size: 11px;
   z-index: 1000;
   .opacity(80);
-  &.above .twipsy-arrow   { #popoverArrow > .above(); }
-  &.left .twipsy-arrow    { #popoverArrow > .left(); }
-  &.below .twipsy-arrow   { #popoverArrow > .below(); }
-  &.right .twipsy-arrow   { #popoverArrow > .right(); }
+  &.above .twipsy-arrow   {@include popoverArrow-above(); }
+  &.left .twipsy-arrow    {@include popoverArrow-left(); }
+  &.below .twipsy-arrow   {@include popoverArrow-below(); }
+  &.right .twipsy-arrow   {@include popoverArrow-right(); }
 }
 .twipsy-inner {
   padding: 3px 8px;
@@ -763,7 +762,7 @@ input[type=submit].btn {
   text-align: center;
   max-width: 200px;
   text-decoration: none;
-  .border-radius(4px);
+  @include border-radius(4px);
 }
 .twipsy-arrow {
   position: absolute;
@@ -782,10 +781,10 @@ input[type=submit].btn {
   z-index: 1000;
   padding: 5px;
   display: none;
-  &.above .arrow { #popoverArrow > .above(); }
-  &.right .arrow { #popoverArrow > .right(); }
-  &.below .arrow { #popoverArrow > .below(); }
-  &.left .arrow  { #popoverArrow > .left(); }
+  &.above .arrow { @include popoverArrow-above(); }
+  &.right .arrow { @include popoverArrow-right(); }
+  &.below .arrow { @include popoverArrow-below(); }
+  &.left .arrow  { @include popoverArrow-left(); }
   .arrow {
     position: absolute;
     width: 0;
@@ -797,21 +796,21 @@ input[type=submit].btn {
     padding: 3px;
     overflow: hidden;
     width: 280px;
-    .border-radius(6px);
-    .box-shadow(0 3px 7px rgba(0,0,0,0.3));
+    @include border-radius(6px);
+    @include bt-box-shadow(0 3px 7px rgba(0,0,0,0.3));
   }
   .title {
     background-color: #f5f5f5;
     padding: 9px 15px;
     line-height: 1;
-    .border-radius(3px 3px 0 0);
+    @include border-radius(3px 3px 0 0);
     border-bottom:1px solid #eee;
   }
   .content {
     background-color: $white;
     padding: 14px;
-    .border-radius(0 0 3px 3px);
-    .background-clip(padding-box);
+    @include border-radius(0 0 3px 3px);
+    @include background-clip(padding-box);
     p, ul, ol {
       margin-bottom: 0;
     }

@@ -73,7 +73,7 @@ select,
   line-height: $baseline;
   color: $gray;
   border: 1px solid #ccc;
-  .border-radius(3px);
+  @include border-radius(3px);
 }
 
 /* mini reset for non-html5 file types */
@@ -282,7 +282,7 @@ input.disabled {
     text-shadow: 0 1px 0 #fff;
     border: 1px solid #ccc;
     border-right-width: 0;
-    .border-radius(3px 0 0 3px);
+    @include border-radius(3px 0 0 3px);
   }
   .active {
     background: lighten($green, 30);
