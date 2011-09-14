@@ -721,7 +721,7 @@ input[type=submit].btn {
     border-bottom: $arrowWidth solid transparent;
     border-left: $arrowWidth solid #000;
   }
-  @mixn popoverArrow-below($arrowWidth: 5px) {
+  @mixin popoverArrow-below($arrowWidth: 5px) {
     top: 0;
     left: 50%;
     margin-left: -$arrowWidth;
