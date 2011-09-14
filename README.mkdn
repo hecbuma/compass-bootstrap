@@ -40,7 +40,7 @@ Now you can add the bootstrap style to your .scss/.sass files:
     
 this will make available all the classes and styles from bootstrap 
 
-If you only want to add some bootstrap styles to your files, add:
+### If you only want to add some bootstrap styles to your files, add:
 
     @import 'preboot.scss';
 
