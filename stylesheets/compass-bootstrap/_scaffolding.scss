@@ -8,15 +8,15 @@
 // -----------
 
 .row {
-  @inlcude clearfix();
-  margin-left: -1 * @gridGutterWidth;
+  $inlcude clearfix();
+  margin-left: -1 * $gridGutterWidth;
 
   // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)
-  // Credit to @dhg for the idea
+  // Credit to $dhg for the idea
   [class*="span"] {
     display: inline;
     float: left;
-    margin-left: @gridGutterWidth;
+    margin-left: $gridGutterWidth;
   }
 
   // Default columns
@@ -67,8 +67,8 @@ html, body {
 }
 body {
   margin: 0;
-  #font > .sans-serif(normal,@basefont,@baseline);
-  color: @gray;
+  @include sans-serif(normal,$basefont,$baseline);
+  color: $gray;
 }
 
 // Container (centered, fixed-width layouts)
@@ -99,12 +99,12 @@ body {
 
 // Links
 a {
-  color: @linkColor;
+  color: $linkColor;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit;
   &:hover {
-    color: @linkColorHover;
+    color: $linkColorHover;
     text-decoration: underline;
   }
 }
