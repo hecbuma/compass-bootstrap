@@ -52,10 +52,10 @@ And now you can use the mixins on your own classes:
 
 Open _preboot.sccs and you will see the entire list of colors, you can change those in order to apply your own color scheme
 
-// VARIABLES
-// ---------
+    // VARIABLES
+    // ---------
 
-// / Links
+    // / Links
     $linkColor:         #0069d6;
     $linkColorHover:    darken($linkColor, 10);
 
