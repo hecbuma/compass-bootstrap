@@ -1,4 +1,5 @@
 # Make sure you list all the project template files here in the manifest.
+stylesheet 'screen.sass', :media => 'screen, projection'
 stylesheet 'compass_bootstrap.scss', :media => 'screen, projection'
 stylesheet '_reset.scss', :media => 'screen, projection'
 stylesheet '_preboot.scss', :media => 'screen, projection'
