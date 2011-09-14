@@ -7,7 +7,7 @@
 // ---------
 
 p {
-  $include shorthand(normal,$basefont,$baseline);
+  @include shorthand(normal,$basefont,$baseline);
   margin-bottom: $baseline / 2;
   small {
     font-size: $basefont - 2;
