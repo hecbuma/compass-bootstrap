@@ -1,4 +1,4 @@
 require 'compass'
 require "compass-bootstrap/version"
 
-Compass::Frameworks.register("bootstrap", :path => "#{File.dirname(__FILE__)}/..")
+Compass::Frameworks.register("compass-bootstrap", :path => "#{File.dirname(__FILE__)}/..")
