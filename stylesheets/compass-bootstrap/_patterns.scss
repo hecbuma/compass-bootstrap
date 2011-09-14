@@ -267,7 +267,7 @@ a.menu:after,
     text-shadow: 0 1px 0 #fff;
     // Hover state
     &:hover {
-      @include vertical-background(#eeeeee, #dddddd);
+      @include vertical-gradient(#eeeeee, #dddddd);
       color: $grayDark;
       text-decoration: none;
       $shadow: inset 0 1px 0 rgba(0,0,0,.025), inset 0 -1px rgba(0,0,0,.025);
