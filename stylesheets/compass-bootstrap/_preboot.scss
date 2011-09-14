@@ -228,7 +228,7 @@ $analog2:           spin($baseColor, -22);
     background-image: linear-gradient(left, $startColor, $endColor); // Le standard
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$startColor, endColorstr=$endColor, GradientType=0); // IE9 and down
   }
-@mixin vertical-gradient ($startColor: #555, $endColor: #333) {
+@mixin vertical-gradient($startColor: #555, $endColor: #333) {
     background-color: $endColor;
     background-repeat: repeat-x;
     background-image: -khtml-gradient(linear, left top, left bottom, from($startColor), to($endColor)); // Konqueror
