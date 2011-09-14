@@ -203,15 +203,15 @@ $analog2:           spin($baseColor, -22);
   // Danger and error appear as red
   &.danger,
   &.error {
-    .gradientBar(#ee5f5b, #c43c35);
+    @include gradientBar(#ee5f5b, #c43c35);
   }
   // Success appears as green
   &.success {
-    .gradientBar(#62c462, #57a957);
+    @include gradientBar(#62c462, #57a957);
   }
   // Info appears as a neutral blue
   &.info {
-    .gradientBar(#5bc0de, #339bb9);
+    @include gradientBar(#5bc0de, #339bb9);
   }
 }
 
