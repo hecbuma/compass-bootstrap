@@ -749,7 +749,7 @@ input[type=submit].btn {
   padding: 5px;
   font-size: 11px;
   z-index: 1000;
-  .opacity(80);
+  @include bt-opacity(80);
   &.above .twipsy-arrow   {@include popoverArrow-above(); }
   &.left .twipsy-arrow    {@include popoverArrow-left(); }
   &.below .twipsy-arrow   {@include popoverArrow-below(); }
