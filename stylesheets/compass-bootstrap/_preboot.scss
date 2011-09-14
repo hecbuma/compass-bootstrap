@@ -272,5 +272,5 @@ $analog2:           spin($baseColor, -22);
 	filter: alpha(opacity=$opacity);
 	-khtml-opacity: $opacity / 100;
 	  -moz-opacity: $opacity / 100;
-	       opacity: @mixinopacity / 100;
+	       opacity: $opacity / 100;
 }
