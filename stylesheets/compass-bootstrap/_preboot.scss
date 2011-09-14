@@ -269,7 +269,7 @@ $analog2:           spin($baseColor, -22);
 
 // Opacity
 @mixin bt-opacity($opacity: 100) {
-	filter: e(%("alpha(opacity=%d)", $opacity));
+	filter: alpha(opacity=$opacity);
 	-khtml-opacity: $opacity / 100;
 	  -moz-opacity: $opacity / 100;
 	       opacity: @mixinopacity / 100;
