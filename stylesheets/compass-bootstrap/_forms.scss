@@ -36,7 +36,7 @@ label,
 input,
 select,
 textarea {
-  @include sans-serif(normal,13px,normal);
+  @include font-sans-serif(normal,13px,normal);
 }
 
 // Float labels left
