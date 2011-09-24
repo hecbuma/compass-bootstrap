@@ -1,4 +1,8 @@
 require 'compass'
 require "compass-bootstrap/version"
 
-Compass::Frameworks.register("compass-bootstrap", :path => "#{File.dirname(__FILE__)}/..")
+plugin_root = File.join(File.dirname(__FILE__), "..")
+
+Compass::Frameworks.register("compass-bootstrap", 
+                            :stylesheets_directory => File.join(plugin_root, "stylesheets"),
+                            :templates_directory => File.join(plugin_root, "vendor/assets/stylesheets"))
