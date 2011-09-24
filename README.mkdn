@@ -17,6 +17,7 @@ Install on Rails 3.0
 Install on Rails 3.1
 ====================
 Add compass and compass-bootstrap to the assets group in you Gemfile
+
     gem 'compass'
     gem 'compass-bootstrap'
 
