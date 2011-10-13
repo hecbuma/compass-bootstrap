@@ -2,3 +2,7 @@
 .bundle
 Gemfile.lock
 pkg/*
+original/*
+*.swp
+*.un~
+.DS_Store
