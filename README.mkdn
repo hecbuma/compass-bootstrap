@@ -149,3 +149,7 @@ this:
 * make the documentation file for mixins and a example site
 * port more classes to mixins
 
+
+## Thanks to
+*[Mario Chavez](https://github.com/mariochavez)
+
