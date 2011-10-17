@@ -16,7 +16,10 @@
 @import "reset.scss";
 
 // Core
-@import "preboot.scss";
+@import "variables.scss";  // Modify this for custom colors, font-sizes, etc
+@import "mixins.scss";
+
+// Grid system and page structure
 @import "scaffolding.scss";
 
 // Styled patterns and elements

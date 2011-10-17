@@ -1,4 +1,4 @@
-/* Typography.scss
+/* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
 
@@ -7,7 +7,7 @@
 // ---------
 
 p {
-  @include shorthand(normal,$basefont,$baseline);
+  @include font-shorthand(normal,$basefont,$baseline);
   margin-bottom: $baseline / 2;
   small {
     font-size: $basefont - 2;
@@ -113,7 +113,7 @@ dl {
 
 // Horizontal rules
 hr {
-  margin: 0 0 19px;
+  margin: 20px 0 19px;
   border: 0;
   border-bottom: 1px solid #eee;
 }
@@ -122,7 +122,6 @@ hr {
 strong {
   font-style: inherit;
   font-weight: bold;
-  line-height: inherit;
 }
 em {
   font-style: italic;
@@ -139,12 +138,12 @@ blockquote {
   border-left: 5px solid #eee;
   padding-left: 15px;
   p {
-    @include shorthand(300,14px,$baseline);
+    @include font-shorthand(300,14px,$baseline);
     margin-bottom: 0;
   }
   small {
     display: block;
-    @include shorthand(300,12px,$baseline);
+    @include font-shorthand(300,12px,$baseline);
     color: $grayLight;
     &:before {
       content: '\2014 \00A0';
@@ -174,7 +173,7 @@ code {
 pre {
   background-color: #f5f5f5;
   display: block;
-  padding: $baseline - 1;
+  padding: ($baseline - 1) / 2;
   margin: 0 0 $baseline;
   line-height: $baseline;
   font-size: 12px;
