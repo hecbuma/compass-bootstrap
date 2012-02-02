@@ -26,8 +26,8 @@ $pink:              #c3325f !default;
 $purple:            #7a43b6 !default;
 
 // Baseline grid
-$basefont:          13px !default;
-$baseline:          18px !default;
+$baseFontSize:          13px !default;
+$baseLineHeight:          18px !default;
 
 // Griditude
 // Modify the grid styles in mixins.less
@@ -53,8 +53,7 @@ $analog2:           spin($baseColor, -22) !default;
 
 
 // More variables coming soon:
-// - $basefont to $baseFontSize
-// - $baseline to $baseLineHeight
-// - $baseFontFamily
+// - $baseLineHeight to $baseLineHeightHeight
+// - $baseFontSizeFamily
 // - $primaryButtonColor
 // - anything else? File an issue on GitHub

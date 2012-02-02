@@ -12,7 +12,7 @@ html, body {
 }
 body {
   margin: 0;
-  @include font-sans-serif(normal,$basefont,$baseline);
+  @include font-sans-serif(normal,$baseFontSize,$baseLineHeight);
   color: $grayDark;
 }
 
