@@ -262,7 +262,7 @@
   border-top-color: $white;
 }
 .navbar .nav .active .caret {
-  .opacity(100);
+  @include opacity(100);
 }
 
 // Remove background color from open dropdown

@@ -6,7 +6,7 @@
 code,
 pre {
   padding: 0 3px 2px;
-  #font > #family > .monospace;
+  @include font-shorthand($family: monospace);
   font-size: $baseFontSize - 1;
   color: $grayDark;
   @include border-radius(3px);

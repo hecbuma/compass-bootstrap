@@ -2,7 +2,7 @@
 // -----------
 
 // Fixed (940px)
-#gridSystem > .generate($gridColumns, $gridColumnWidth, $gridGutterWidth);
+@include gridSystem(fixed);
 
 // Fluid (940px)
-#fluidGridSystem > .generate($gridColumns, $fluidGridColumnWidth, $fluidGridGutterWidth);
+@include gridSystem(responsive);

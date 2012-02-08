@@ -20,13 +20,10 @@
     clear: both;
   }
 }
-.clearfix {
-  @include clearfix;
-}
 
 // Webkit-style focus
 // ------------------
-.tab-focus() {
+@mixin tab-focus() {
   // Default
   outline: thin dotted;
   // Webkit
@@ -44,7 +41,7 @@
 
 // IE7 inline-block
 // ----------------
-.ie7-inline-block() {
+@include ie7-inline-block() {
   *display: inline; /* IE7 inline-block hack */
   *zoom: 1;
 }
@@ -83,7 +80,7 @@
 
 // Placeholder text
 // -------------------------
-.placeholder($color: $placeholderText) {
+@mixin placeholder($color: $placeholderText) {
   :-moz-placeholder {
     color: $color;
   }
@@ -297,19 +294,18 @@
 // --------------------------------------------------
 
 // Add an alphatransparency value to any background or border color (via Elyse Holladay)
-#translucent {
-  .background($color: $white, $alpha: 1) {
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+@mixin translucent-background($color: $white, $alpha: 1) {
     background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-  }
-  .border($color: $white, $alpha: 1) {
-    border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
-    .background-clip(padding-box);
-  }
+}
+@mixin translucent-border($color: $white, $alpha: 1) {
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-clip: padding-box;
 }
 
 // Gradient Bar Colors for buttons and alerts
-.gradientBar($primaryColor, $secondaryColor) {
-  @include linear-gradient($primaryColor, $secondaryColor);
+@include gradientBar($primaryColor, $secondaryColor) {
+  @include background-image(linear-gradient($primaryColor, $secondaryColor));
   border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
 }
@@ -383,18 +379,17 @@
   @include background-image(linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent));
 }
 // Reset filters for IE
-.reset-filter() {
+@include reset-filter() {
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
 
 
 // Mixin for generating button backgrounds
 // ---------------------------------------
-.buttonBackground($startColor, $endColor) {
+@include buttonBackground($startColor, $endColor) {
   // gradientBar will set the background to a pleasing blend of these, to support IE<=9
-  .gradientBar($startColor, $endColor);
-  .reset-filter();
-
+  @include gradientBar($startColor, $endColor);
+  @include reset-filter;
   // in these cases the gradient won't cover the background, so we override
   &:hover, &:active, &.active, &.disabled, &[disabled] {
     background-color: $endColor;

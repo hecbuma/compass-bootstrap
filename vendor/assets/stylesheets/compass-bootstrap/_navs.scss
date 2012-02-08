@@ -67,7 +67,7 @@
 // Common styles
 .nav-tabs,
 .nav-pills {
-  .clearfix();
+  @include clearfix;
 }
 .nav-tabs > li,
 .nav-pills > li {
@@ -228,7 +228,7 @@
 .nav .open.active .caret,
 .nav .open a:hover .caret {
   border-top-color: $white;
-  .opacity(100);
+  @include opacity(100);
 }
 
 // Dropdowns in stacked tabs
