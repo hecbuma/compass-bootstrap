@@ -118,22 +118,23 @@ table {
 // -----------------
 
 // Change the columns
-.tableColumns($columnSpan: 1) {
-  float: none;
-  width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 16;
-  margin-left: 0;
-}
-table {
-  .span1     { @include tableColumns(1); }
-  .span2     { @include tableColumns(2); }
-  .span3     { @include tableColumns(3); }
-  .span4     { @include tableColumns(4); }
-  .span5     { @include tableColumns(5); }
-  .span6     { @include tableColumns(6); }
-  .span7     { @include tableColumns(7); }
-  .span8     { @include tableColumns(8); }
-  .span9     { @include tableColumns(9); }
-  .span10    { @include tableColumns(10); }
-  .span11    { @include tableColumns(11); }
-  .span12    { @include tableColumns(12); }
-}
+@include gridSystem(table);
+// .tableColumns($columnSpan: 1) {
+//   float: none;
+//   width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 16;
+//   margin-left: 0;
+// }
+// table {
+//   .span1     { @include tableColumns(1); }
+//   .span2     { @include tableColumns(2); }
+//   .span3     { @include tableColumns(3); }
+//   .span4     { @include tableColumns(4); }
+//   .span5     { @include tableColumns(5); }
+//   .span6     { @include tableColumns(6); }
+//   .span7     { @include tableColumns(7); }
+//   .span8     { @include tableColumns(8); }
+//   .span9     { @include tableColumns(9); }
+//   .span10    { @include tableColumns(10); }
+//   .span11    { @include tableColumns(11); }
+//   .span12    { @include tableColumns(12); }
+// }

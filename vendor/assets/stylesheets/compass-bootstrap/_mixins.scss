@@ -131,7 +131,7 @@
 // Grid system builder for fixed, responsive and input grids
 // 
 @mixin gridSystem(
-    $type: fixed, // fixed | responsive | input
+    $type: fixed, // fixed | responsive | input | table
     $columns: $gridColumns, 
     $columnWidth: if($type == responsive, $fluidGridColumnWidth, $gridColumnWidth), 
     $gutterWidth: if($type == responsive, $fluidGridGutterWidth, $fluidGridGutterWidth)
@@ -176,6 +176,16 @@
     input,textarea,.uneditable-input {
       @for $i from 1 through $columns {
         &.span#{$i} { width: (($gridColumnWidth) * $i) + ($gridGutterWidth * ($i - 1)) - 10; }
+      }
+    }
+  } @else if $type == table {
+    table {
+      @for $i from 1 through $columns {
+        .span#{$i} {
+          float: none;
+          width: (($gridColumnWidth) * $columns) + ($gridGutterWidth * ($columns - 1)) - 16;
+          margin-left: 0;
+        }
       }
     }
   }
@@ -299,35 +309,35 @@
 
 // Gradient Bar Colors for buttons and alerts
 .gradientBar($primaryColor, $secondaryColor) {
-  #gradient > .vertical($primaryColor, $secondaryColor);
+  @include linear-gradient($primaryColor, $secondaryColor);
   border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
 }
 
 // Gradients
 #gradient {
-  .horizontal($startColor: #555, $endColor: #333) {
-    background-color: $endColor;
-    background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
-    background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
-    background-image: linear-gradient(left, $startColor, $endColor); // Le standard
-    background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",$startColor,$endColor)); // IE9 and down
-  }
-  .vertical($startColor: #555, $endColor: #333) {
-    background-color: mix($startColor, $endColor, 60%);
-    background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
-    background-image: linear-gradient(top, $startColor, $endColor); // The standard
-    background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$startColor,$endColor)); // IE9 and down
-  }
+  // .horizontal($startColor: #555, $endColor: #333) {
+  //   background-color: $endColor;
+  //   background-image: -moz-linear-gradient(left, $startColor, $endColor); // FF 3.6+
+  //   background-image: -ms-linear-gradient(left, $startColor, $endColor); // IE10
+  //   background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+  //   background-image: -webkit-linear-gradient(left, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  //   background-image: -o-linear-gradient(left, $startColor, $endColor); // Opera 11.10
+  //   background-image: linear-gradient(left, $startColor, $endColor); // Le standard
+  //   background-repeat: repeat-x;
+  //   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",$startColor,$endColor)); // IE9 and down
+  // }
+  // .vertical($startColor: #555, $endColor: #333) {
+  //   background-color: mix($startColor, $endColor, 60%);
+  //   background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+  //   background-image: -ms-linear-gradient(top, $startColor, $endColor); // IE10
+  //   background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+  //   background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  //   background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+  //   background-image: linear-gradient(top, $startColor, $endColor); // The standard
+  //   background-repeat: repeat-x;
+  //   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$startColor,$endColor)); // IE9 and down
+  // }
   .directional($startColor: #555, $endColor: #333, $deg: 45deg) {
     background-color: $endColor;
     background-repeat: repeat-x;
@@ -357,15 +367,20 @@
     background-repeat: no-repeat;
     // Opera cannot do radial gradients yet
   }
-  .striped($color, $angle: -45deg) {
-    background-color: $color;
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-    background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -ms-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  }
+  // .striped($color, $angle: -45deg) {
+  //   background-color: $color;
+  //   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+  //   background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  //   background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  //   background-image: -ms-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  //   background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  //   background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  // }
+}
+@mixin striped-gradient($color, $angle: -45deg) {
+  background-color: $color;
+  // @include background-image(linear-gradient(0 100%, 100% 0, color-stops(rgba(255,255,255,.15) .25, transparent .25, transparent .5, rgba(255,255,255,.15) .5, rgba(255,255,255,.15) .75, transparent .75, to(transparent))));
+  @include background-image(linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent));
 }
 // Reset filters for IE
 .reset-filter() {
@@ -399,32 +414,29 @@
 // POPOVER ARROWS
 // -------------------------
 // For tipsies and popovers
-#popoverArrow {
-  .top($arrowWidth: 5px) {
+@mixin popoverArrow($position: top, $arrowWidth: 5px) {
+  @if $position == top {
     bottom: 0;
     left: 50%;
     margin-left: -$arrowWidth;
     border-left: $arrowWidth solid transparent;
     border-right: $arrowWidth solid transparent;
     border-top: $arrowWidth solid $black;
-  }
-  .left($arrowWidth: 5px) {
+  } @else if $position = left {
     top: 50%;
     right: 0;
     margin-top: -$arrowWidth;
     border-top: $arrowWidth solid transparent;
     border-bottom: $arrowWidth solid transparent;
     border-left: $arrowWidth solid $black;
-  }
-  .bottom($arrowWidth: 5px) {
+  } @else if $position = bottom {
     top: 0;
     left: 50%;
     margin-left: -$arrowWidth;
     border-left: $arrowWidth solid transparent;
     border-right: $arrowWidth solid transparent;
     border-bottom: $arrowWidth solid $black;
-  }
-  .right($arrowWidth: 5px) {
+  } @else if $position = right {
     top: 50%;
     left: 0;
     margin-top: -$arrowWidth;
