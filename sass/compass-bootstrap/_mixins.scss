@@ -1,4 +1,4 @@
-@import "compass/css3"
+@import "compass/css3";
 
 // Mixins.less
 // Snippets of reusable CSS to develop faster and keep code readable
@@ -10,8 +10,9 @@
 
 // Clearfix
 // --------
-// For clearing floats like a boss h5bp.com/q
-@mixin clearfix() {
+// For clearing floats like a boss - h5bp.com
+
+@mixin clearfix {
   *zoom: 1;
   &:before,
   &:after {
