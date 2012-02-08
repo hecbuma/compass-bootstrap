@@ -1,5 +1,5 @@
 # Make sure you list all the project template files here in the manifest.
-stylesheet '_compass_bootstrap.scss', :media => 'screen, projection'
+stylesheet 'compass_bootstrap.scss', :media => 'screen, projection'
 
 discover :javascript
 
