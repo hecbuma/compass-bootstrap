@@ -247,7 +247,7 @@
 
 // Clear any floats
 .tabbable {
-  .clearfix();
+  @include clearfix;
 }
 
 // Remove border on bottom, left, right

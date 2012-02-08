@@ -4,7 +4,7 @@
 .thumbnails {
   margin-left: -20px;
   list-style: none;
-  @extend .clearfix;
+  @include clearfix;
 }
 .thumbnails > li {
   float: left;

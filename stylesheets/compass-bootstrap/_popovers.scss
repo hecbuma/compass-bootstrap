@@ -42,7 +42,7 @@
   padding: 14px;
   background-color: $white;
   @include border-radius(0 0 3px 3px);
-  .background-clip(padding-box);
+  @include background-clip(padding-box);
   p, ul, ol {
     margin-bottom: 0;
   }

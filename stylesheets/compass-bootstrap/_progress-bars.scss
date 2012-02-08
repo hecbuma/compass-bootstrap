@@ -6,19 +6,19 @@
 // ----------
 
 // Webkit
-$-webkit-keyframes progress-bar-stripes {
+@-webkit-keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
 
 // Firefox
-$-moz-keyframes progress-bar-stripes {
+@-moz-keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
 
 // Spec
-$keyframes progress-bar-stripes {
+@keyframes progress-bar-stripes {
   from  { background-position: 0 0; }
   to    { background-position: 40px 0; }
 }
@@ -60,7 +60,7 @@ $keyframes progress-bar-stripes {
 
 // Call animation for the active one
 .progress.active .bar {
-  @include animation(progress-bar-stripes 2s linear infinite);
+  @include animate(progress-bar-stripes 2s linear infinite);
 }
 
 
