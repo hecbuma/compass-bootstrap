@@ -2,6 +2,6 @@
 stylesheet 'compass_bootstrap.scss', :media => 'screen, projection'
 stylesheet 'compass_bootstrap_responsive.scss', :media => 'screen, projection'
 
-discover :javascript
+discover :all
 
 description "SCSS port of less version of twitter bootstrap"
