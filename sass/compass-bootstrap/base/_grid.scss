@@ -1,0 +1,8 @@
+// GRID SYSTEM
+// -----------
+
+// Fixed (940px)
+@include gridSystem(fixed);
+
+// Fluid (940px)
+@include gridSystem(responsive);

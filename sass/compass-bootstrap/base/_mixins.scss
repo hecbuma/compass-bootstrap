@@ -1,0 +1,345 @@
+@import "compass/css3";
+
+// Mixins.less
+// Snippets of reusable CSS to develop faster and keep code readable
+// -----------------------------------------------------------------
+
+
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss - h5bp.com
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Center-align a block level element
+// ----------------------------------
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// IE7 inline-block
+// ----------------
+@mixin ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+@mixin ie7-restore-left-whitespace() {
+  *margin-left: .3em;
+
+  &:first-child {
+    *margin-left: 0;
+  }
+}
+
+@mixin ie7-restore-right-whitespace() {
+  *margin-right: .3em;
+
+  &:last-child {
+    *margin-left: 0;
+  }
+}
+
+// Sizing shortcuts
+// -------------------------
+@mixin size($height: 5px, $width: 5px) {
+  width: $width;
+  height: $height;
+}
+@mixin square($size: 5px) {
+  @include size($size, $size);
+}
+
+// Placeholder text
+// -------------------------
+@mixin placeholder($color: $placeholderText) {
+  :-moz-placeholder {
+    color: $color;
+  }
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+
+
+// FONTS
+// --------------------------------------------------
+
+// Font Stacks
+@mixin font-shorthand($weight: normal, $size: 14px, $lineHeight: 20px, $family: false) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+  @if $family == serif {
+    font-family: $serifFontFamily; 
+  } @else if $family == sans-serif {
+    font-family: $sansSerifFontFamily;
+  } @else if $family == monospace {
+    font-family: $monospaceFontFamily;   
+  }
+}
+
+
+
+// GRID SYSTEM
+// --------------------------------------------------
+
+// Site container
+// -------------------------
+@mixin container-fixed {
+  width: $gridRowWidth;
+  margin-left: auto;
+  margin-right: auto;
+  @include clearfix;
+}
+
+// Le grid system
+// -------------------------
+// 
+// Grid system builder for fixed, responsive and input grids
+// 
+@mixin gridSystem(
+    $type: fixed, // fixed | responsive | input | table
+    $columns: $gridColumns, 
+    $columnWidth: if($type == responsive, $fluidGridColumnWidth, $gridColumnWidth), 
+    $gutterWidth: if($type == responsive, $fluidGridGutterWidth, $gridGutterWidth)
+  ){
+  @if $type == fixed {
+    .row {
+      margin-left: $gutterWidth * -1;
+      @include clearfix;
+    }
+    [class*="span"] {
+      float: left;
+      margin-left: $gutterWidth;
+    }
+    @for $i from 1 through $columns {
+      @if $i == $columns {
+        .span#{$i},.container { width: ($columnWidth * $i) + ($gutterWidth * ($i - 1)); }
+      } @else {
+        .span#{$i} { width: ($columnWidth * $i) + ($gutterWidth * ($i - 1)); }
+      }
+    }
+    @for $i from 1 through $columns {
+      @if $i != $columns {
+        .offset#{$i} { margin-left: ($columnWidth * $i) + ($gutterWidth * ($i - 1)) + ($gutterWidth * 2); }
+      }
+    }
+  } @else if $type == responsive {
+    .row-fluid {
+      width: 100%;
+      @include clearfix;
+      > [class*="span"] {
+        float: left;
+        margin-left: $gutterWidth;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+      @for $i from 1 through $columns {
+        .span#{$i} { width: ($columnWidth * $i) + ($gutterWidth * ($i - 1)); }
+      }
+    }
+  } @else if $type == input {
+    input,textarea,.uneditable-input {
+      @for $i from 1 through $columns {
+        &.span#{$i} { width: (($columnWidth) * $i) + ($gutterWidth * ($i - 1)) - 10; }
+      }
+    }
+  } @else if $type == table {
+    table {
+      @for $i from 1 through $columns {
+        .span#{$i} {
+          float: none;
+          width: (($columnWidth) * $i) + ($gutterWidth * ($i - 1)) - 16;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// User select
+// For selecting text on the page
+@mixin user-select($select) {
+  -webkit-user-select: $select;
+     -moz-user-select: $select;
+       -o-user-select: $select;
+          user-select: $select;
+}
+
+// Resize anything
+@mixin resizable($direction: both) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: $gridColumnGutter) {
+  -webkit-column-count: $columnCount;
+     -moz-column-count: $columnCount;
+          column-count: $columnCount;
+  -webkit-column-gap: $columnGap;
+     -moz-column-gap: $columnGap;
+          column-gap: $columnGap;
+}
+
+
+
+// BACKGROUNDS
+// --------------------------------------------------
+
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+// Add an alphatransparency value to any background or border color (via Elyse Holladay)
+@mixin translucent-background($color: $white, $alpha: 1) {
+    background-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
+@mixin translucent-border($color: $white, $alpha: 1) {
+  border-color: hsla(hue($color), saturation($color), lightness($color), $alpha);
+  background-clip: padding-box;
+}
+
+// Gradient Bar Colors for buttons and alerts
+@mixin gradientBar($primaryColor, $secondaryColor) {
+  @include background-image(linear-gradient($primaryColor, $secondaryColor));
+  border-color: $secondaryColor $secondaryColor darken($secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+}
+
+// Gradients
+@mixin directional-gradient($startColor: #555, $endColor: #333, $deg: 45deg) {
+  background-color: $endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+  background-image: -ms-linear-gradient($deg, $startColor, $endColor); // IE10
+  background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+  background-image: linear-gradient($deg, $startColor, $endColor); // The standard
+}
+@mixin vertical-three-colors-gradient($startColor: #00b3ee, $midColor: #7a43b6, $colorStop: 50%, $endColor: #c3325f) {
+  background-color: mix($midColor, $endColor, 80%);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), color-stop($colorStop, $midColor), to($endColor));
+  background-image: -webkit-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $midColor $colorStop, $endColor);
+  background-image: -ms-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: -o-linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-image: linear-gradient($startColor, $midColor $colorStop, $endColor);
+  background-repeat: no-repeat;
+  // filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",$startColor,$endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+}
+
+@mixin striped-gradient($color, $angle: -45deg) {
+  background-color: $color;
+  // @include background-image(linear-gradient(0 100%, 100% 0, color-stops(rgba(255,255,255,.15) .25, transparent .25, transparent .5, rgba(255,255,255,.15) .5, rgba(255,255,255,.15) .75, transparent .75, to(transparent))));
+  @include background-image(linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent));
+}
+// Reset filters for IE
+@mixin reset-filter() {
+  // TODO what's this e business?
+  // filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+
+
+// Mixin for generating button backgrounds
+// ---------------------------------------
+@mixin buttonBackground($startColor, $endColor) {
+  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
+  @include gradientBar($startColor, $endColor);
+  @include reset-filter;
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:active, &.active, &.disabled, &[disabled] {
+    background-color: $endColor;
+  }
+
+  // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
+  &:active,
+  &.active {
+    background-color: darken($endColor, 10%) e("\9");
+  }
+}
+
+
+// COMPONENT MIXINS
+// --------------------------------------------------
+
+// POPOVER ARROWS
+// -------------------------
+// For tipsies and popovers
+@mixin popoverArrow($position: top, $arrowWidth: 5px) {
+  @if $position == top {
+    bottom: 0;
+    left: 50%;
+    margin-left: -$arrowWidth;
+    border-left: $arrowWidth solid transparent;
+    border-right: $arrowWidth solid transparent;
+    border-top: $arrowWidth solid $black;
+  } @else if $position == left {
+    top: 50%;
+    right: 0;
+    margin-top: -$arrowWidth;
+    border-top: $arrowWidth solid transparent;
+    border-bottom: $arrowWidth solid transparent;
+    border-left: $arrowWidth solid $black;
+  } @else if $position == bottom {
+    top: 0;
+    left: 50%;
+    margin-left: -$arrowWidth;
+    border-left: $arrowWidth solid transparent;
+    border-right: $arrowWidth solid transparent;
+    border-bottom: $arrowWidth solid $black;
+  } @else if $position == right {
+    top: 50%;
+    left: 0;
+    margin-top: -$arrowWidth;
+    border-top: $arrowWidth solid transparent;
+    border-bottom: $arrowWidth solid transparent;
+    border-right: $arrowWidth solid $black;
+  }
+}
+
+
+// Animate Mixin Plugin
+// via http://thecssguru.freeiz.com/animate/src/partials/_animate.sass
+// TODO credit
+
+@mixin animate($name: fadeIn, $duration: 1s, $delay: .2s, $function: ease, $mode: both) {
+  @include experimental(animation, $name $duration $delay $function $mode)
+}
+  

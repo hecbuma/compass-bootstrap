@@ -97,8 +97,8 @@ Open _preboot.sccs and you will see the entire list of colors, you can change th
     $purple:            #7a43b6;
 
     // Baseline grid
-    $basefont:          13px;
-    $baseline:          18px;
+    $baseFontSize:          13px;
+    $baseLineHeight:          18px;
 
     // Griditude
     $gridColumns:       16;
