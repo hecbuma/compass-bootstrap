@@ -132,7 +132,7 @@ Open application.css.scss and remove the **require_tree .** directive, in order
 to have access to bootstrap mixins we need to import all our scss files with
 @import sass command like:
 
-    @import 'compass-bootstrap/compass_bootstrap';
+    @import 'compass-bootstrap/base';
 
 If we have more scss files in our project import them as well to access mixis.
 
@@ -150,6 +150,4 @@ this:
 * port more classes to mixins
 
 
-## Thanks to
-*[Mario Chavez](https://github.com/mariochavez)
 
